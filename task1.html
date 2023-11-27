@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="t1style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Password Generator</h1>
+    <div class="password-display" id="passwordDisplay">
+      
+    </div>
+    <div class="options">
+      <label for="length">Password Length:</label>
+      <input type="number" id="length" min="4" max="30" value="12">
+      
+      <label for="uppercase">Include Uppercase Letters:</label>
+      <input type="checkbox" id="uppercase">
+      
+      <label for="lowercase">Include Lowercase Letters:</label>
+      <input type="checkbox" id="lowercase" checked>
+      
+      <label for="numbers">Include Numbers:</label>
+      <input type="checkbox" id="numbers" checked>
+      
+      <label for="symbols">Include Symbols:</label>
+      <input type="checkbox" id="symbols">
+      
+      <button id="generateBtn">Generate Password</button>
+    </div>
+    
+    <div class="password-strength" id="passwordStrength">
+        <span>Password Strength: Weak</span>
+        <div class="arrow"></div>
+      </div>
+  </div>
+
+  <script src="t1script.js"></script>
+</body>
+</html>
