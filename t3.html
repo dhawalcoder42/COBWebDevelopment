@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket World Cup Quiz</title>
+  <style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    --sz: 5px;
+    --sp: 10s;
+    --b1: #3c3532;
+    --b2: #1c1b18;
+    --b3: #0c0b0a;
+    --b4: #0c0b0ae0;
+    --c1: #e399ff;
+    --ts: 50%/calc(var(--sz) * 17.5) calc(var(--sz) * 29.5);
+    background:
+        radial-gradient(circle at 50% 50%, var(--b4) calc(var(--sz) * 1), #fff0 calc(var(--sz) * 8)) var(--ts),
+        radial-gradient(circle at 0% 0%, var(--b4) calc(var(--sz) * 1), #fff0 calc(var(--sz) * 8)) var(--ts),
+        radial-gradient(circle at 0% 100%, var(--b4) calc(var(--sz) * 1), #fff0 calc(var(--sz) * 8)) var(--ts),
+        radial-gradient(circle at 100% 0%, var(--b4) calc(var(--sz) * 1), #fff0 calc(var(--sz) * 8)) var(--ts),
+        radial-gradient(circle at 100% 100%, var(--b4) calc(var(--sz) * 1), #fff0 calc(var(--sz) * 8)) var(--ts),
+        conic-gradient(from 90deg at 97.5% 67%, var(--c1) 0 87.5deg, #fff0 88deg 100%) var(--ts),
+        conic-gradient(from 90deg at 97.5% 67%, var(--c1) 0 87.5deg, #fff0 88deg 100%) var(--ts),
+        conic-gradient(from 182.5deg at 2.5% 67%, #fff0 0 0deg, var(--c1) 0.5deg 90deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 182.5deg at 2.5% 67%, #fff0 0 0deg, var(--c1) 0.5deg 90deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 270deg at 2.5% 33%, var(--c1) 0 87.5deg, #fff0 88deg 100%) var(--ts),
+        conic-gradient(from 270deg at 2.5% 33%, var(--c1) 0 87.5deg, #fff0 88deg 100%) var(--ts),
+        conic-gradient(from 2.5deg at 97.5% 33%, #fff0 0 0deg, var(--c1) 0.5deg 90deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 2.5deg at 97.5% 33%, #fff0 0 0deg, var(--c1) 0.5deg 90deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 116.5deg at 50% 85.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 116.5deg at 50% 85.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 116.5deg at 50% 85.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 120deg at 50% 83%, var(--c1) 0 120deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from -63.5deg at 50% 14.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from -63.5deg at 50% 14.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from -63.5deg at 50% 14.5%, var(--b1) 0 127deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from -60deg at 50% 17%, var(--c1) 0 120deg, #fff0 0 100%) var(--ts),
+        conic-gradient(from 0deg at 50% 50%, #fff0 0 2deg, var(--b2) 2.5deg 57.5deg, #fff0 58deg 62.5deg, var(--b1) 63deg 117.5deg, #fff0 118deg 122.5deg, var(--b3) 123deg 177.5deg, #fff0 178deg 182deg, var(--b2) 182.5deg 237.5deg, #fff0 0 242.5deg, var(--b1) 243deg 297.5deg, #fff0 298deg 302.5deg, var(--b3) 303deg 357.5deg, #fff0 358deg 360deg) var(--ts), var(--c1);
+    animation: colors var(--sp) linear 0s infinite;
+}
+
+@keyframes colors {
+    100% { filter: hue-rotate(360deg); }
+}
+
+.quiz-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Added animation and color changes */
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Glowing animation */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px #007bff, 0 0 30px #007bff;
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px #0056b3, 0 0 60px #0056b3;
+    }
+}
+.options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.option {
+    padding: 8px 16px;
+    margin-top: 10px;
+    background-color: #1096a0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #e0e0e0;
+}
+
+.selected {
+    background-color: #031323;
+    color: #fff;
+}
+
+h1 {
+    color: #000000;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Cricket World Cup Quiz</h1>
+    <p id="question"></p>
+    <div id="options" class="options-container"></div>
+    <button id="submitBtn" style="display: none;">Submit</button>
+    <p id="result"></p>
+    <button id="resetBtn" style="display: none;">Reset Quiz</button>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "Which country won the first Cricket World Cup in 1975?",
+        options: ["West Indies", "Australia", "England", "India"],
+        answer: "West Indies"
+      },
+      {
+        question: "Who has won the most ICC Men's Cricket World Cup titles?",
+        options: ["India", "Australia", "West Indies", "England"],
+        answer: "Australia"
+      },
+      {
+        question: "Which country hosted the ICC Men's Cricket World Cup in 2019?",
+        options: ["India", "Australia", "England", "New Zealand"],
+        answer: "England"
+      },
+      {
+        question: "Who was the man of the series in the ICC Men's Cricket World Cup 2019?",
+        options: ["Kane Williamson", "Ben Stokes", "Rohit Sharma", "Virat Kohli"],
+        answer: "Kane Williamson"
+      },
+      {
+        question: "Which player has scored the most runs in a single Cricket World Cup tournament?",
+        options: ["Sachin Tendulkar", "Matthew Hayden", "Martin Guptill", "Ricky Ponting"],
+        answer: "Martin Guptill"
+      }
+      
+    ];
+
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const submitButton = document.getElementById('submitBtn');
+    const resetButton = document.getElementById('resetBtn');
+    const resultElement = document.getElementById('result');
+
+    let currentQuestion = -1;
+    let score = 0;
+    let userAnswer = null;
+
+    function loadQuestion() {
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        const currentQuizData = quizData[currentQuestion];
+        questionElement.innerText = currentQuizData.question;
+
+        optionsElement.innerHTML = '';
+        currentQuizData.options.forEach((option) => {
+          const optionElement = document.createElement('button');
+          optionElement.innerText = option;
+          optionElement.classList.add('option');
+          optionElement.addEventListener('click', () => selectOption(option, optionElement));
+          optionsElement.appendChild(optionElement);
+        });
+
+        submitButton.style.display = 'none';
+        resultElement.innerText = '';
+        resetButton.style.display = 'none';
+      } else {
+        showFinalResult();
+      }
+    }
+
+    function selectOption(option, element) {
+      const options = optionsElement.getElementsByClassName('option');
+      for (let i = 0; i < options.length; i++) {
+        options[i].classList.remove('selected');
+      }
+      element.classList.add('selected');
+      userAnswer = option;
+      submitButton.style.display = 'block';
+    }
+
+    function checkAnswer() {
+      const currentQuizData = quizData[currentQuestion];
+      if (userAnswer === currentQuizData.answer) {
+        score++;
+        showResult("Correct!");
+      } else {
+        const correctOptionIndex = currentQuizData.options.indexOf(currentQuizData.answer);
+        const correctOptionElement = optionsElement.getElementsByClassName('option')[correctOptionIndex];
+        showResult(`Incorrect! The correct answer is: ${currentQuizData.answer}`);
+        correctOptionElement.classList.add('selected');
+      }
+
+      submitButton.style.display = 'none';
+      resetButton.style.display = 'block';
+
+      if (currentQuestion + 1 < quizData.length) {
+        setTimeout(loadQuestion, 1500); 
+      } else {
+        setTimeout(showFinalResult, 1500);
+      }
+    }
+
+    function showResult(message) {
+      resultElement.innerText = message;
+    }
+
+    function showFinalResult() {
+      questionElement.style.display = 'none';
+      optionsElement.style.display = 'none';
+      submitButton.style.display = 'none';
+
+      resultElement.innerText = `You scored ${score} out of ${quizData.length}`;
+      resultElement.style.display = 'block';
+      resetButton.style.display = 'block';
+    }
+
+    function resetQuiz() {
+      currentQuestion = -1;
+      score = 0;
+      userAnswer = null;
+      resultElement.style.display = 'none';
+      questionElement.style.display = 'block';
+      optionsElement.style.display = 'block';
+      resetButton.style.display = 'none';
+      loadQuestion();
+    }
+
+    submitButton.addEventListener('click', checkAnswer);
+    resetButton.addEventListener('click', resetQuiz);
+    loadQuestion();
+  </script>
+</body>
+</html>
