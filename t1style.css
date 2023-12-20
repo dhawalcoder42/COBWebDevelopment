@@ -155,16 +155,16 @@ body {
   }
 
   .weak {
-    background-color: #ff6347; /* Light Coral */
+    background-color: #ff6347;
     color: #fff;
   }
 
   .strong {
-    background-color: #32cd32; /* Lime Green */
+    background-color: #32cd32; 
     color: #fff;
   }
 
   .symbols {
-    background-color: #041a5e; /* Royal Blue */
+    background-color: #041a5e; 
     color: #fff;
   }
