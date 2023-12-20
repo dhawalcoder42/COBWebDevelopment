@@ -152,9 +152,9 @@ body {
 .food-cards {
   display: flex;
   justify-content: center;
-  gap: 40px; /* Increased gap between cards */
-  margin-right: 170px; /* Adjust the margin to center between vertical navbar and right side */
-  margin-left: 180px; /* Adjust the margin to center between vertical navbar and right side */
+  gap: 40px; 
+  margin-right: 170px; 
+  margin-left: 180px; 
   flex-wrap: wrap;
 }
 
@@ -276,7 +276,7 @@ body {
   }
 }
 
-/* Footer styles */
+
 .footer {
   position: relative;
   bottom: 0;
